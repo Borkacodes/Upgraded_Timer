@@ -1,0 +1,46 @@
+# Timer
+#Credit to Borkacode
+#https://www.youtube.com/channel/UC9KjQtJy2vkGTUp_LtWF22Q
+import time
+import winsound
+print "               TIMER"
+#Ask for Duration
+Dur1 = input("How many hours?  : ")
+Dur2 = input("How many minutes?: ")
+Dur3 = input("How many seconds?: ")
+TDur = Dur1 * 60 * 60 + Dur2 * 60 + Dur3
+# Ask to Begin
+start = raw_input("Would you like to begin Timing? (y/n): ")
+if start == "y":
+    timeLoop = True
+
+# Variables to keep track and display
+CSec = 0
+Sec = 0
+Min = 0
+Hour = 0
+# Begin Process
+timeLoop = start
+while timeLoop:
+    CSec += 1
+    Sec += 1
+    print(str(Hour) + " Hours " + str(Min) + " Mins " + str(Sec) + " Sec ")
+    time.sleep(1)
+    if Sec == 60:
+        Sec = 0
+        Min += 1
+        Hour = 0
+        print(str(Min) + " Minute(s)")
+    if Min == 60:
+        Sec = 0
+        Min = 0
+        Hour += 1
+        print(str(Hour) + " Hour(s)")
+    elif CSec == TDur:
+        timeLoop = False
+        print("time\'s up")
+        input("")
+    while 1 == 1:
+        frequency = 1900  # Set Frequency To 2500 Hertz
+        duration = 1000  # Set Duration To 1000 ms == 1 second
+        winsound.Beep(frequency, duration)
